@@ -17,6 +17,9 @@ class App extends Component {
       foo: 'bar',
       resumeData: {}
     };
+
+    ReactGA.initialize("G-39M5VJG7JL")
+    ReactGA.pageview(window.location.pathname)
   }
 
   getResumeData(){
