@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import ParticlesBg  from "particles-bg";
 import Pdf from '../document/AvishekArora-CV.pdf'
+import ReactGA from 'react-ga'
 
 
 class Header extends Component {
+   downloadResumeHandler(){
+   ReactGA.event({
+      category: "Resume Button",
+      action: "Resume Downloaded."
+   })
+   }
+   redirectGithubHandler(){
+      ReactGA.event({
+         category:"Github Redirection", 
+         action: "Redirected to github"
+      })
+   }
   render() {
 
     if(this.props.data){
@@ -28,8 +41,8 @@ class Header extends Component {
             <h3>{description}.</h3>
             <hr />
             <ul className="social">
-               <a href={Pdf} without rel="noopener noreferrer" target="_blank" data-title="AvishekArora-CV" className="button btn project-btn"><i className="fa fa-book"></i>Download CV</a>
-               <a target="_blank" href={github} className="button btn github-btn"><i className="fa fa-github"></i>Github</a>
+               <a href={Pdf} onClick={this.downloadResumeHandler} without rel="noopener noreferrer" target="_blank" data-title="AvishekArora-CV" className="button btn project-btn"><i className="fa fa-book"></i>Download CV</a>
+               <a target="_blank" onClick={this.redirectGithubHandler} href={github} className="button btn github-btn"><i className="fa fa-github"></i>Github</a>
             </ul>
          </div>
       </div>
